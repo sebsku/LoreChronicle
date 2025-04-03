@@ -18,6 +18,9 @@ obj/
 .idea/**/dictionaries
 .idea/**/shelf
 
+# Env variables
+.env
+
 # AWS User-specific
 .idea/**/aws.xml
 
