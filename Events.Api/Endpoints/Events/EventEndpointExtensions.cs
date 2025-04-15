@@ -6,6 +6,7 @@ public static class EventEndpointExtensions
     {
         app.MapGetEvents();
         app.MapGetEvent();
+        app.MapCreateEvent();
         
         return app;
     }

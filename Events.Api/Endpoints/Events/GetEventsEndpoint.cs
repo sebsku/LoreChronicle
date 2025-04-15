@@ -9,13 +9,14 @@ public static class GetEventsEndpoint
 
     public static IEndpointRouteBuilder MapGetEvents(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/api/events", async (IEventRepository eventRepository, CancellationToken cancellationToken) =>
-        {
-            var events = await eventRepository.GetEventsAsync(cancellationToken);
-            var response = events.MapToResponse();
-            return TypedResults.Ok(response);
-        })
-        .WithName(Name);
+        app.MapGet("/api/events", async (
+                IEventRepository eventRepository, CancellationToken cancellationToken) =>
+            {
+                var events = await eventRepository.GetEventsAsync(cancellationToken);
+                var response = events.MapToResponse();
+                return TypedResults.Ok(response);
+            })
+            .WithName(Name);
         return app;
     }
 }

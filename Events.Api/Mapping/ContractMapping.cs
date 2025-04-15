@@ -1,4 +1,5 @@
 using Events.Application.Models;
+using Events.Contracts.Requests;
 using Events.Contracts.Responses;
 
 namespace Events.Api.Mapping;
@@ -22,6 +23,18 @@ public static class ContractMapping
         return new EventsResponse
         {
             Items = events.Select(MapToResponse)
+        };
+    }
+
+    public static Event MapToEvent(this CreateEventRequest request)
+    {
+        return new Event
+        {
+            EventId = Guid.NewGuid(),
+            EventType = request.EventType,
+            Timestamp = request.Timestamp,
+            Duration = request.Duration,
+            Metadata = request.Metadata
         };
     }
 }

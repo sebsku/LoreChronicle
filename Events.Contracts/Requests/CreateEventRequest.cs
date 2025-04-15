@@ -1,8 +1,7 @@
-namespace Events.Contracts.Responses;
+namespace Events.Contracts.Requests;
 
-public record EventResponse
+public class CreateEventRequest
 {
-    public required Guid EventId { get; init; }
     public required string EventType { get; init; }
     public required DateTime Timestamp { get; init; }
     public TimeSpan? Duration { get; init; }
