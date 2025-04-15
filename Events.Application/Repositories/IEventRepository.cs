@@ -5,4 +5,5 @@ namespace Events.Application.Repositories;
 public interface IEventRepository
 {
     Task<IEnumerable<Event>> GetEventsAsync(CancellationToken cancellationToken = default);
+    Task<Event?> GetEventAsync(Guid id, CancellationToken cancellationToken = default);
 }

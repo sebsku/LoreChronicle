@@ -20,4 +20,12 @@ public class EventRepository : IEventRepository
         const string query = "SELECT event_id AS EventId, event_type AS EventType, timestamp, duration, metadata FROM events";
         return await connection.QueryAsync<Event>(query);
     }
+
+    public async Task<Event?> GetEventAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        using var connection = await _dbConnectionFactory.GetOpenConnectionAsync(cancellationToken);
+        
+        const string query = "SELECT * FROM events WHERE id = @id";
+        return await connection.QuerySingleOrDefaultAsync<Event>(query, new { id });
+    }
 }
